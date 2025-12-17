@@ -1,0 +1,271 @@
+1️⃣ Gestor de tareas por consola (CRUD básico)
+Objetivo: Dominar estructuras básicas y control de flujo.
+Requisitos técnicos
+
+Listas y diccionarios
+
+Funciones
+
+Entrada/salida por consola
+
+Manejo básico de errores (try/except)
+
+Funcionalidades
+
+Crear tarea
+
+Listar tareas
+
+Marcar tarea como completada
+
+Eliminar tarea
+
+Extras (opcional)
+
+Guardar tareas en un archivo .json
+
+📁 Repo sugerido: python-task-manager-cli
+
+2️⃣ Validador de contraseñas
+Objetivo: Practicar lógica y expresiones regulares.
+Reglas
+
+Mínimo 8 caracteres
+
+Al menos 1 mayúscula
+
+1 número
+
+1 carácter especial
+
+Conceptos
+
+re
+
+Funciones puras
+
+Retorno de errores claros
+
+Extra
+
+Tests con unittest o pytest
+
+📁 password-validator
+
+3️⃣ Analizador de texto
+Objetivo: Manipulación de strings y colecciones.
+Funciones
+
+Contar palabras
+
+Contar caracteres
+
+Top 10 palabras más frecuentes
+
+Eliminar stopwords
+
+Conceptos
+
+collections.Counter
+
+Comprensiones
+
+Archivos .txt
+
+📁 text-analyzer-python
+
+🟡 NIVEL INTERMEDIO (Diseño y buenas prácticas)
+4️⃣ Sistema de inventario orientado a objetos
+Objetivo: Aplicar OOP real, no solo clases simples.
+Requisitos
+
+Clases: Product, Inventory
+
+Métodos CRUD
+
+Encapsulación
+
+Métodos mágicos (**str**, **eq**)
+
+Extra
+
+Persistencia en JSON o CSV
+
+📁 inventory-system-oop
+
+5️⃣ API REST con FastAPI (mini proyecto)
+Objetivo: Backend moderno.
+Endpoints
+
+POST /items
+
+GET /items
+
+PUT /items/{id}
+
+DELETE /items/{id}
+
+Conceptos
+
+FastAPI
+
+Pydantic
+
+Tipado
+
+Status codes
+
+Extra
+
+Documentación automática (/docs)
+
+📁 fastapi-crud-api
+
+6️⃣ Script ETL simple (Extract–Transform–Load)
+Objetivo: Procesamiento de datos.
+Flujo
+
+Leer CSV
+
+Limpiar datos
+
+Generar estadísticas
+
+Guardar resultados
+
+Conceptos
+
+pandas
+
+Manejo de errores
+
+Logging
+
+📁 etl-csv-python
+
+🔵 NIVEL AVANZADO (Nivel profesional)
+7️⃣ Sistema de autenticación simple
+Objetivo: Seguridad y arquitectura.
+Características
+
+Registro
+
+Login
+
+Hash de contraseñas (bcrypt)
+
+Tokens (JWT)
+
+Conceptos
+
+Seguridad básica
+
+Clean code
+
+Separación de capas
+
+📁 auth-system-python
+
+8️⃣ Web Scraper robusto
+Objetivo: Automatización y scraping real.
+Funcionalidades
+
+Extraer datos de una web
+
+Manejo de errores
+
+Retries
+
+Exportar a CSV / JSON
+
+Conceptos
+
+requests
+
+BeautifulSoup
+
+time
+
+logging
+
+📁 web-scraper-python
+
+9️⃣ Simulación de sistema_toggle (Estado derivado)
+Objetivo: Lógica avanzada y modelado de dominio.
+Ejemplo:
+Un sistema de dispositivos inteligentes:
+
+Encendido
+
+Apagado
+
+Batería
+
+Estado derivado (ej: activo = encendido AND batería > 0)
+
+Conceptos
+
+Domain Modeling
+
+Propiedades (@property)
+
+Inmutabilidad parcial
+
+📁 smart-device-domain-model
+
+🔟 Mini framework de validación
+Objetivo: Pensar como diseñador de librerías.
+Ejemplo
+class User:
+name = StringField(required=True, min_length=3)
+age = IntField(min_value=18)
+
+Conceptos
+
+Metaclasses o **set_name**
+
+Descriptores
+
+API limpia
+
+Tests avanzados
+
+📁 mini-validation-framework
+
+📌 Recomendaciones para GitHub (MUY IMPORTANTE)
+Cada repo debería tener:
+
+✅ README.md claro
+
+✅ Ejemplos de uso
+
+✅ Tests
+
+✅ Tipado (typing)
+
+✅ Estructura limpia
+
+✅ Commits claros
+
+Ejemplo de README:
+
+## Features
+
+## Installation
+
+## Usage
+
+## Tests
+
+## Tech Stack
+
+🚀 Siguiente paso
+Si quieres, en el próximo mensaje podemos:
+
+Elegir 3 ejercicios clave para portafolio
+
+Diseñar la estructura exacta del repo
+
+O resolver uno paso a paso como challenge técnico
+
+Dime 👉 ¿nivel intermedio o avanzado primero?
