@@ -1,32 +1,25 @@
 def start_program():
-    try:
-        # FIXME Si el usuario escribe un valor diferente a un numero entonces, que lo envie a un bucle de confirmación.
-        open_question = input(
-            """
+    while True:
+        try:
+            opcion = int(
+                input(
+                    """
             1: Crear tarea.
             2: Listar tareas.
             3: Actualizar tareas.
             4: Eliminar tareas.
             5: Salir.
             Digita: """
-        )
-        open_question = int(open_question)
-
-        while not (open_question) in range(1, 6):
-            print(f"{open_question} no es valida")
-            open_question = input(
-                """
-            1: Crear tarea.
-            2: Listar tareas.
-            3: Actualizar tareas.
-            4: Eliminar tareas.
-            5: Salir.
-            Digita: """
+                )
             )
-            open_question = int(open_question)
-        return open_question
-    except KeyboardInterrupt:
-        return False
+            if 1 <= opcion <= 5:
+                return opcion
+            else:
+                print("[!] Por favor, elige un numero del 1 al 5")
+        except ValueError:
+            print("Debes ingresar un numero entero")
+        except KeyboardInterrupt:
+            return False
 
 
 def question_result() -> str | None:
