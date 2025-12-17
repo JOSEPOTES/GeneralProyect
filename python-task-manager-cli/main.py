@@ -1,5 +1,6 @@
 def start_program():
     try:
+        # FIXME Si el usuario escribe un valor diferente a un numero entonces, que lo envie a un bucle de confirmación.
         open_question = input(
             """
             1: Crear tarea.
@@ -10,6 +11,7 @@ def start_program():
             Digita: """
         )
         open_question = int(open_question)
+
         while not (open_question) in range(1, 6):
             print(f"{open_question} no es valida")
             open_question = input(
@@ -27,8 +29,51 @@ def start_program():
         return False
 
 
+def question_result() -> str | None:
+    question_open = input("Agregar mas?: (S/N): ").lower()
+    while (not (question_open) in ("s", "n")) or len(question_open) <= 0:
+        print("Opcion no valida")
+        question_open = input("Agregar mas?: (S/N): ").lower()
+    if question_open == "s":
+        return "s"
+    elif question_open == "n":
+        return "n"
+
+
 def create_task():
-    print("Creando tarea")
+    task_list = []
+    try:
+        MAX_TASK = 10
+        contador = 1
+        while contador < MAX_TASK:
+            print(f"Tarea: {contador} ")
+            title = input("Titulo: ").capitalize()
+            description = input("Description: ").capitalize()
+            due_date = input("Fecha caducidad: ")
+            state = input(
+                "Escriba el estado(pendiente,terminada,cancelada): "
+            ).capitalize()
+            task_list.append(
+                {
+                    "title": title,
+                    "Description": description,
+                    "contador": contador,
+                    "Expires at": due_date,
+                    "state": ("undefined" if len(state) <= 0 else state),
+                }
+            )
+            contador += 1
+            if contador == 6:
+                add_more = question_result()
+                if add_more == "s":
+                    continue
+                elif add_more == "n":
+                    return task_list
+                else:
+                    return False
+        return task_list
+    except KeyboardInterrupt:
+        return task_list
 
 
 def read_task():
@@ -47,7 +92,7 @@ def run():
     try:
         start = start_program()
         if start == 1:
-            create_task()
+            print(create_task())
         elif start == 2:
             read_task()
         elif start == 3:
