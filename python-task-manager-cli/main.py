@@ -2,6 +2,7 @@ import json
 from typing import Any
 import os
 from pathlib import Path
+from datetime import datetime
 
 
 def question_result() -> str | None:
@@ -15,12 +16,21 @@ def question_result() -> str | None:
         return "n"
 
 
+def search(title: str, data):
+    for line in data:
+        if line["title"] == title:
+            return line
+    return None
+
+
 def create_task():
     file_name: str = input("Nombre del archivo: ").lower().strip().replace(" ", "_")
     task_list = []
     try:
+        print(f"el archivo: {file_name} creado.")
         MAX_TASK = 10
         contador = 1
+        now = datetime.now()
         while contador < MAX_TASK:
             print(f"Tarea: {contador} ")
             title = input("Titulo: ").lower()
@@ -29,9 +39,10 @@ def create_task():
             state = input("Escriba el estado(pendiente,terminada,cancelada): ").lower()
             task_list.append(
                 {
+                    "Numero de tarea": contador,
                     "title": title,
                     "Description": description,
-                    "contador": contador,
+                    "Created at": now.isoformat(),  # converts datetime to string.
                     "Expires at": due_date,
                     "state": ("undefined" if len(state) <= 0 else state),
                 }
@@ -55,7 +66,6 @@ def create_task():
         return run()
 
 
-# FIXME
 def read_task():
     file_name = input("Nombre del archivo: ").lower()
     # almacena el resultado de la busqueda del archivo
@@ -63,20 +73,29 @@ def read_task():
         # verifica si el archivo escrito en 85line existe.
         if not (os.path.exists(f"{file_name}.json")):
             question_create_file = input(
-                "El archivo no existe, 1) Crear nuevo, 2) Salir: "
+                f"El archivo: {file_name} no existe, 1) Crear nuevo, 2) Salir: "
             )
             if question_create_file == "1":
                 create_task()
             elif question_create_file == "2":
                 print("saliendo")
                 run()
-        task_title = input("Nombre de la tarea: ").lower()
+            else:
+                print("Opcion no valida")
+                run()
         with open(f"{file_name}.json", "r", encoding="utf-8") as file_read:
             data_json = json.load(file_read)
-            task_dict = {task[task_title] for task in data_json}
-            print(task_dict)
-    except:
-        print("Leyendo")
+            title = input("Titulo: ")
+            while len(title) <= 0:
+                title = input("Titulo: ")
+            bring_data = search(title, data=data_json)
+            while bring_data is None:
+                print(f"Ups!, no he encontrado la tarea {title}")
+                title = input("Titulo: ")
+                bring_data = search(title=title, data=data_json)
+            print(bring_data)
+    finally:
+        run()
 
 
 def update_task():
