@@ -3,13 +3,13 @@ import string
 import random
 
 
-password = "TeamoJesus1*"
+password = "hO9*"
 # defino patrones: scape -> util para encontrar los signos de puntuación sin usar un for(revisa documentación en escape)
 spectial_caracteres = re.search(f"[{re.escape(string.punctuation)}]", password)
-has_upper_case = re.search(r"[A-Z]", password)
-has_lower_case = re.search(r"[a-z]", password)
-
-if all([spectial_caracteres, has_upper_case, has_lower_case]):
-    print("Contraseña valida")
+lower_upper = re.search(r"[A-Za-z0-9]", password)
+has_numbers = re.search(r"[0-9]", password)
+word_len = True if len(password) >= 8 else False
+if all([spectial_caracteres, lower_upper, word_len]):
+    print("Contraseña completa")
 else:
-    print("Contraseña invalida")
+    print("Contraseña incompleta.")
